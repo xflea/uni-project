@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<title>Segreteria Universitaria</title>
+</head>
+
+<body>
+	<div class="container mt-5">
+		<h3>Aggiungi Corso</h3>
+
+		<form th:action="@{/segreteria/corsi/save}" th:object="${corso}" method="post">
+			
+			<input type="text" hidden class="form-control" th:name="mode" th:value="${mode}" />
+
+			<div th:hidden="${mode.equals('update')}" class="form-group">
+				<label class="form-label">ID<span class="text-danger">*</span></label>
+				<input type="text" class="form-control" th:field="*{id}" />
+			</div>
+
+			<div class="form-group">
+				<label class="form-label">Nome<span class="text-danger">*</span></label>
+				<input type="text" class="form-control" th:field="*{nome}" />
+			</div>
+
+			<div class="form-group">
+				<label class="form-label">Indirizzo</label>
+				<input type="text" class="form-control" th:field="*{indirizzo}" />
+			</div>
+
+			<div class="form-group">
+				<label class="form-label">N° esami<span class="text-danger">*</span></label>
+				<input type="number" class="form-control" th:field="*{n_esami}" />
+				<div class="form-text">Minimo 10 esami</div>
+			</div>
+
+			<button type="submit" class="btn btn-primary mt-5">Aggiungi</button>
+
+		</form>
+
+		<div class="text-danger mt-5" th:if="${errori.isEmpty() == false}">
+			<h6>Sono stati rivelati degli errori:</h6>
+			<ul th:each="errore : ${errori}">
+				<li th:text="${errore}" />
+			</ul>
+		</div>
+
+		<div class="mt-5">
+			<a href="/segreteria/corsi/list">Torna alla lista dei corsi</a>
+		</div>
+	</div>
+</body>
+
+</html>
