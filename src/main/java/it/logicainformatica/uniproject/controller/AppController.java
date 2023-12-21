@@ -109,5 +109,12 @@ public class AppController {
 		
 		return "list-studenti";
 	}
+	
+	@GetMapping("/studenti/delete/{id}")
+	public String deleteStudente(@PathVariable String id) {
+		studenteService.delete(id);
+		
+		return "redirect:/segreteria/studenti/list";
+	}
 
 }

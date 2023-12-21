@@ -28,7 +28,7 @@ public class Studente {
 	@Temporal(TemporalType.DATE)
 	private Date data_nascita;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;
 	
 	@Column(nullable = false)

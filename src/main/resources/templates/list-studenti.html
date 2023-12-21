@@ -9,44 +9,52 @@
 </head>
 
 <body>
-		<div class="container mt-5">
-			<h3>Lista dei studenti</h3>
-			<div>
-				<a th:href="@{/segreteria/studenti/showForm}">
-					<button type="button" class="btn btn-primary mt-2 mb-3">+ Aggiungi uno studente</button>
-				</a>
-			</div>
-			<table class="table">
-				<thead>
-				    <tr class="table-dark">
-					    <th scope="col">Matricola</th>
-					    <th scope="col">Nome</th>
-					    <th scope="col">Indirizzo</th>
-					    <th scope="col">N° Esami</th>
-					    <th scope="col">Azioni</th>
-				    </tr>
-				</thead>
-				<tbody>
-				    <tr th:each="tempStudente : ${studenti}">
-					    <td th:text="${tempStudente.id}" />
-					    <td th:text="${tempStudente.nome}" />
-					    <td th:text="${tempStudente.indirizzo}" />
-					    <td th:text="${tempStudente.n_esami}" />
-					    <td>
-							<a th:href="@{/segreteria/studenti/showFormUpdate( studenteId = ${tempStudente.id} )}">
-								<button type="button" class="btn btn-primary">Modifica</button>
-							</a>
-							<a th:href="@{/segreteria/studenti/delete/__${tempStudente.id}__}">
-								<button type="button" class="btn btn-danger">Cancella</button>
-							</a>
-						</td>
-				    </tr>
-				</tbody>
-			</table>
-			<div class="mt-5">
-				<a href="/">Torna alla home</a>
-			</div>
+	<div class="container mt-5">
+		<h3>Lista dei studenti</h3>
+		<div>
+			<a th:href="@{/segreteria/studenti/form}">
+				<button type="button" class="btn btn-primary mt-2 mb-3">+ Aggiungi uno studente</button>
+			</a>
 		</div>
-	</body>
+		<table class="table">
+			<thead>
+				<tr class="table-dark">
+					<th scope="col">Matricola</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Cognome</th>
+					<th scope="col">Email</th>
+					<th scope="col">Data di nascita</th>
+					<th scope="col">Indirizzo</th>
+					<th scope="col">Città</th>
+					<th scope="col">Corso</th>
+					<th scope="col">Azioni</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tempStudente : ${studenti}">
+					<td th:text="${tempStudente.matricola}" />
+					<td th:text="${tempStudente.nome}" />
+					<td th:text="${tempStudente.cognome}" />
+					<td th:text="${tempStudente.email}" />
+					<td th:text="${tempStudente.data_nascita}" />
+					<td th:text="${tempStudente.indirizzo}" />
+					<td th:text="${tempStudente.citta}" />
+					<td th:text="${tempStudente.corso.getNome()}" />
+					<td>
+						<a th:href="@{/segreteria/studenti/showFormUpdate( studenteMatricola = ${tempStudente.matricola} )}">
+							<button type="button" class="btn btn-primary">Modifica</button>
+						</a>
+						<a th:href="@{/segreteria/studenti/delete/__${tempStudente.matricola}__}">
+							<button type="button" class="btn btn-danger">Cancella</button>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="mt-5">
+			<a href="/">Torna alla home</a>
+		</div>
+	</div>
+</body>
 
 </html>
