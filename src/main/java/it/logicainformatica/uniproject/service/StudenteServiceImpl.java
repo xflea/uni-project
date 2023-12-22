@@ -41,4 +41,15 @@ public class StudenteServiceImpl implements StudenteService {
 		if(opt.isPresent()) studenteRepository.deleteById(id);
 	}
 
+	@Override
+	public Studente findByEmail(String email) {
+		List<Studente> studenti = this.findAll();
+		
+		for(Studente s : studenti) {
+			if(s.getEmail().equals(email)) return s;
+		}
+		
+		return null;
+	}
+
 }

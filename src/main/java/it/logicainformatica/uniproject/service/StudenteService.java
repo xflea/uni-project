@@ -12,6 +12,8 @@ public interface StudenteService {
 	
 	public Studente findById(String id);
 	
+	public Studente findByEmail(String email);
+	
 	public void delete(String id);
 
 }

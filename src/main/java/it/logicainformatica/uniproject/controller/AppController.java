@@ -110,6 +110,78 @@ public class AppController {
 		return "list-studenti";
 	}
 	
+	@GetMapping("/studenti/form")
+	public String formStudente(@RequestParam("studenteMatricola") String matricola, Model model) {
+		List<String> errori = new ArrayList<String>();
+		Studente studente = studenteService.findById(matricola);
+		List<Corso> corsi = corsoService.findAll();
+		
+		if(studente != null) {
+			model.addAttribute("studente", studente);
+			model.addAttribute("mode", "update");
+		}
+		else {
+			model.addAttribute("studente", new Studente());
+			model.addAttribute("mode", "new");
+		}
+		
+		model.addAttribute("corsi", corsi);
+		model.addAttribute("errori", errori);
+		
+		return "studente-form";
+	}
+	
+	@PostMapping("/studenti/save")
+	public String saveStudente(@ModelAttribute("studente") Studente studente, @RequestParam("mode") String mode, Model model) {
+		List<String> errori = new ArrayList<String>();
+				
+		if(studente.getMatricola().trim() == "") errori.add("Il campo 'matricola' è obbligatorio;");
+		else {
+			if(studente.getMatricola().trim().contains(" ")) {
+				errori.add("Il campo 'matricola' non può contenere spazi;");
+			}
+			else {
+				if(mode.equals("new")) {
+					Studente s = studenteService.findById(studente.getMatricola().trim());
+					if(s != null) errori.add("La matricola è già presente nel sistema");
+				}
+			}
+		}
+		
+		if(studente.getEmail().trim() == "") errori.add("Il campo 'email' è obbligatorio;");
+		else {
+			if(!studente.isEmailValid()) {
+				errori.add("Il campo 'email' non è valido;");
+			}
+			else {
+				if(mode.equals("new")) {
+					Studente s = studenteService.findByEmail(studente.getEmail().trim());
+					if(s != null) errori.add("La matricola è già presente nel sistema");
+				}
+			}
+		}
+		
+		if(studente.getNome().trim() == "") errori.add("Il campo 'nome' è obbligatorio;");
+		if(studente.getCognome().trim() == "") errori.add("Il campo 'cognome' è obbligatorio;");
+		if(studente.getIndirizzo().trim() == "") errori.add("Il campo 'indirizzo' è obbligatorio;");
+		if(studente.getCitta().trim() == "") errori.add("Il campo 'città' è obbligatorio;");
+		if(studente.getData_nascita() == null) errori.add("Il campo 'data di nascita' è obbligatorio;");
+		if(studente.getCorso() == null) errori.add("Il campo 'corso' è obbligatorio;");
+			
+		if(errori.isEmpty()) {
+			studenteService.save(studente);
+			
+			return "redirect:/segreteria/studenti/list";
+		}
+		
+		model.addAttribute("studente", studente);
+		model.addAttribute("mode", mode);
+		model.addAttribute("errori", errori);
+		
+		return "studente-form";
+		
+	}
+	
 	@GetMapping("/studenti/delete/{id}")
 	public String deleteStudente(@PathVariable String id) {
 		studenteService.delete(id);

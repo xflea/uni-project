@@ -1,6 +1,7 @@
 package it.logicainformatica.uniproject.model;
 
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -91,6 +92,12 @@ public class Studente {
 
 	public String getEmail() {
 		return email;
+	}
+	
+	public boolean isEmailValid() {
+		String regexPattern = "^(.+)@(\\S+)$";
+
+		return Pattern.compile(regexPattern).matcher(this.getEmail()).matches();
 	}
 
 	public void setEmail(String email) {

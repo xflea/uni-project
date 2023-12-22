@@ -12,7 +12,7 @@
 	<div class="container mt-5">
 		<h3>Lista dei studenti</h3>
 		<div>
-			<a th:href="@{/segreteria/studenti/form}">
+			<a th:href="@{/segreteria/studenti/form( studenteMatricola = null )}">
 				<button type="button" class="btn btn-primary mt-2 mb-3">+ Aggiungi uno studente</button>
 			</a>
 		</div>
@@ -41,7 +41,7 @@
 					<td th:text="${tempStudente.citta}" />
 					<td th:text="${tempStudente.corso.getNome()}" />
 					<td>
-						<a th:href="@{/segreteria/studenti/showFormUpdate( studenteMatricola = ${tempStudente.matricola} )}">
+						<a th:href="@{/segreteria/studenti/form( studenteMatricola = ${tempStudente.matricola} )}">
 							<button type="button" class="btn btn-primary">Modifica</button>
 						</a>
 						<a th:href="@{/segreteria/studenti/delete/__${tempStudente.matricola}__}">
