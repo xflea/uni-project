@@ -104,14 +104,19 @@ public class AppController {
 	@GetMapping("/studenti/list")
 	public String findAllStudenti(Model model) {
 		List<Studente> list_studenti = studenteService.findAll();
+		List<Corso> list_corsi = corsoService.findAll();
 		
 		model.addAttribute("studenti", list_studenti);
+		model.addAttribute("corsi", list_corsi);
 		
 		return "list-studenti";
 	}
 	
 	@GetMapping("/studenti/form")
 	public String formStudente(@RequestParam("studenteMatricola") String matricola, Model model) {
+		
+		if(corsoService.findAll().isEmpty()) return "redirect:/";
+		
 		List<String> errori = new ArrayList<String>();
 		Studente studente = studenteService.findById(matricola);
 		List<Corso> corsi = corsoService.findAll();

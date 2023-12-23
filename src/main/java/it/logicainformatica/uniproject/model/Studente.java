@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "studenti")
@@ -26,7 +26,7 @@ public class Studente {
 	private String cognome;
 	
 	@Column(nullable = false)
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date data_nascita;
 	
 	@Column(nullable = false, unique = true)
