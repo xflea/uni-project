@@ -3,18 +3,47 @@
 
 <head>
 	<meta charset="UTF-8">
+
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 	<title>Segreteria Universitaria</title>
 </head>
 
 <body>
-	<!--<meta http-equiv="Refresh" content="0; url='/segreteria/corsi/list'" />-->
 	<center class="mt-5">
 		<h3>Pannello di controllo della segreteria studenti</h3>
-		<div class="d-flex flex-column mt-5">
-			<a href="/segreteria/corsi/list">Gestisci corsi</a>
-			<a href="/segreteria/studenti/list">Gestisci studenti</a>
+		<div class="d-flex justify-content-center mt-5">
+			<!--<a href="/segreteria/corsi/list">Gestisci corsi</a>
+			<a href="/segreteria/studenti/list">Gestisci studenti</a>-->
+			<a href="/segreteria/corsi/list" class="p-2 link-underline link-underline-opacity-0">
+				<div class="card" style="width: 18rem; background-color: #b3ecff;">
+					<center>
+						<svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+							class="bi bi-book" viewBox="0 0 16 16">
+							<path
+								d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
+						</svg>
+						<div class="card-body">
+							<h5 class="card-title">Corsi</h5>
+						</div>
+					</center>
+				</div>
+			</a>
+			<a href="/segreteria/studenti/list" class="p-2 link-underline link-underline-opacity-0">
+				<div class="card" style="width: 18rem; background-color: #b3ecff;">
+					<center>
+						<svg class="mt-4" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+							class="bi bi-people-fill" viewBox="0 0 16 16">
+							<path
+								d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+						</svg>
+						<div class="card-body">
+							<h5 class="card-title">Studenti</h5>
+						</div>
+					</center>
+				</div>
+			</a>
 		</div>
 	</center>
 </body>
