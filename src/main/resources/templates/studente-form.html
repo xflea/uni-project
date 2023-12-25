@@ -52,12 +52,9 @@
 			</div>
 
 			<div th:hidden="${mode.equals('update')}" class="form-group">
-				<label class="form-label">Corso<span class="text-danger">*</span></label>
-				<select class="form-select">
-					<option selected>Seleziona un corso</option>
-					<div th:each="tempCorso : ${corsi}">
-						<option th:value="${tempCorso.id}" th:text="${tempCorso.nome}" />
-					</div>
+				<label class="form-label">Seleziona un corso<span class="text-danger">*</span></label>
+				<select class="form-select" th:name="corso_id">
+					<option th:each="tempCorso : ${corsi}" th:value="${tempCorso.id}" th:text="${tempCorso.nome}" />
 				</select>
 			</div>
 

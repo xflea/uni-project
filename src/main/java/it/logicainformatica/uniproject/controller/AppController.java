@@ -137,8 +137,9 @@ public class AppController {
 	}
 	
 	@PostMapping("/studenti/save")
-	public String saveStudente(@ModelAttribute("studente") Studente studente, @RequestParam("mode") String mode, Model model) {
+	public String saveStudente(@ModelAttribute("studente") Studente studente, @RequestParam("mode") String mode, @RequestParam("corso_id") String corso_id, Model model) {
 		List<String> errori = new ArrayList<String>();
+		List<Corso> corsi = corsoService.findAll();
 				
 		if(studente.getMatricola().trim() == "") errori.add("Il campo 'matricola' è obbligatorio;");
 		else {
@@ -161,7 +162,7 @@ public class AppController {
 			else {
 				if(mode.equals("new")) {
 					Studente s = studenteService.findByEmail(studente.getEmail().trim());
-					if(s != null) errori.add("La matricola è già presente nel sistema");
+					if(s != null) errori.add("La email è già presente nel sistema");
 				}
 			}
 		}
@@ -171,15 +172,19 @@ public class AppController {
 		if(studente.getIndirizzo().trim() == "") errori.add("Il campo 'indirizzo' è obbligatorio;");
 		if(studente.getCitta().trim() == "") errori.add("Il campo 'città' è obbligatorio;");
 		if(studente.getData_nascita() == null) errori.add("Il campo 'data di nascita' è obbligatorio;");
-		if(studente.getCorso() == null) errori.add("Il campo 'corso' è obbligatorio;");
 			
 		if(errori.isEmpty()) {
+			Corso corso = new Corso();
+			corso.setId(corso_id);
+			studente.setCorso(corso);
+			
 			studenteService.save(studente);
 			
 			return "redirect:/segreteria/studenti/list";
 		}
 		
 		model.addAttribute("studente", studente);
+		model.addAttribute("corsi", corsi);
 		model.addAttribute("mode", mode);
 		model.addAttribute("errori", errori);
 		
