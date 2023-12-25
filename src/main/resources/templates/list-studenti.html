@@ -43,7 +43,7 @@
 						<td th:text="${tempStudente.nome}" />
 						<td th:text="${tempStudente.cognome}" />
 						<td th:text="${tempStudente.email}" />
-						<td th:text="${tempStudente.data_nascita}" />
+						<td th:text="${#dates.format(tempStudente.data_nascita, 'dd/MM/yyyy')}"></td>
 						<td th:text="${tempStudente.indirizzo}" />
 						<td th:text="${tempStudente.citta}" />
 						<td th:text="${tempStudente.corso.getNome()}" />
