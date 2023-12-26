@@ -33,14 +33,7 @@ public class StudenteServiceImpl implements StudenteService {
 		
 		return null;
 	}
-
-	@Override
-	public void delete(String id) {
-		Optional<Studente> opt = studenteRepository.findById(id);
-		
-		if(opt.isPresent()) studenteRepository.deleteById(id);
-	}
-
+	
 	@Override
 	public Studente findByEmail(String email) {
 		List<Studente> studenti = this.findAll();
@@ -50,6 +43,13 @@ public class StudenteServiceImpl implements StudenteService {
 		}
 		
 		return null;
+	}
+
+	@Override
+	public void delete(String id) {
+		Optional<Studente> opt = studenteRepository.findById(id);
+		
+		if(opt.isPresent()) studenteRepository.deleteById(id);
 	}
 
 }
