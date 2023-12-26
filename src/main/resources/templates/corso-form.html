@@ -10,7 +10,7 @@
 
 <body>
 	<div class="container mt-5">
-		<h3>Aggiungi Corso</h3>
+		<h3 th:text="${mode.equals('new')} ? 'Aggiungi corso' : 'Modifica corso'" />
 
 		<form th:action="@{/segreteria/corsi/save}" th:object="${corso}" method="post">
 			

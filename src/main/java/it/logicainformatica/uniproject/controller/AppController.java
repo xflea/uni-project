@@ -172,6 +172,7 @@ public class AppController {
 		if(studente.getIndirizzo().trim() == "") errori.add("Il campo 'indirizzo' è obbligatorio;");
 		if(studente.getCitta().trim() == "") errori.add("Il campo 'città' è obbligatorio;");
 		if(studente.getData_nascita() == null) errori.add("Il campo 'data di nascita' è obbligatorio;");
+		if(corso_id.trim() == "") errori.add("Il campo 'corso' è obbligatorio;");
 			
 		if(errori.isEmpty()) {
 			Corso corso = new Corso();
