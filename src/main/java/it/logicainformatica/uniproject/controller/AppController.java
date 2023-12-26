@@ -92,11 +92,26 @@ public class AppController {
 		
 	}
 	
-	@GetMapping("/corsi/delete/{id}")
-	public String deleteCorso(@PathVariable String id) {
-		corsoService.delete(id);
+	@GetMapping("/corsi/confirmDelete/{id_corso}")
+	public String confirmDeleteCorso(@PathVariable String id_corso, Model model) {
+		//corsoService.delete(id);
+		
+		Corso corso = corsoService.findById(id_corso);
+		
+		if(corso != null) {
+			model.addAttribute("corso", corso);
+			
+			return "corso-delete";
+		}
 		
 		return "redirect:/segreteria/corsi/list";
+	}
+	
+	@PostMapping("/corsi/delete")
+	public String deleteCorso(@ModelAttribute("corso") Corso corso) {
+		corsoService.delete(corso.getId());
+		
+		return "redirect:/segreteria/corsi/list"; 
 	}
 	
 	// mapping per gli studenti

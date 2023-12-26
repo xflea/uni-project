@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<title>Segreteria Universitaria</title>
+</head>
+
+<body>
+	<div class="container mt-5">
+		<h3>Conferma cancellazione corso</h3>
+
+		<center class="mt-5 text-danger">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="-2 -3 24 24">
+				<path fill="currentColor"
+					d="m12.8 1.613l6.701 11.161c.963 1.603.49 3.712-1.057 4.71a3.213 3.213 0 0 1-1.743.516H3.298C1.477 18 0 16.47 0 14.581c0-.639.173-1.264.498-1.807L7.2 1.613C8.162.01 10.196-.481 11.743.517c.428.276.79.651 1.057 1.096M10 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2m0-9a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V6a1 1 0 0 0-1-1" />
+			</svg>
+			<h2>ATTENZIONE</h2>
+		</center>
+		<h5 class="text-danger">La cancellazione del corso comporta anche la cancellazione dal sistema di tutti gli studenti appartenti a
+			quel corso.</h5>
+		<h5 class="mt-5">Sei sicuro di voler procedere?</h5>
+
+		<form th:action="@{/segreteria/corsi/delete}" th:object="${corso}" method="post" class="row g-2">
+			<div class="col-auto">
+				<input hidden type="text" th:field="*{id}" class="form-control" />
+			</div>
+			<div class="col-auto">
+				<button type="submit" class="btn btn-danger mb-3">Sì, sono sicuro</button>
+			</div>
+		</form>
+
+		<div class="mt-5">
+			<a href="/segreteria/corsi/list">Torna alla lista dei corsi</a>
+		</div>
+	</div>
+</body>
+
+</html>
