@@ -4,7 +4,7 @@
 Progetto per il corso Spring di LogicaInformatica.
 
 
-## Istallazione e setup
+## Installazione e setup
 
 Per l'installazione è solamente necessario clonare il progetto
 
