@@ -16,6 +16,8 @@ Per un corretto funzionamento, assicucarsi di mettere le corrette credenziali pe
 
 È possibile aggiungere, modificare ed eliminare gli studenti dal sistema.
 
+Non è possibile aggiungere studenti se non ci sono corsi nel sistema.
+
 Durante la creazione di uno studente, oltre ai controlli sui campi obbligatori, vengono effettuati controlli di correttezza e unicità sia sulla matricola sia sulla email, questo perché a livello funzionale dovrebbe essere possibile, ad esempio, che 2 email identiche siano presenti nel sistema.
 
 NB: il testo del compito specificava che il campo "matricola" e "corso" non potessero essere modificati.
